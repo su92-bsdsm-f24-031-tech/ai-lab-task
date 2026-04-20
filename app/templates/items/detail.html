@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}{{ item.title }}{% endblock %}
+{% block body %}
+<div class="lg:flex lg:items-start lg:gap-10">
+  <div class="lg:w-[min(100%,28rem)] lg:shrink-0">
+    {% if item.image_path %}
+      <div class="overflow-hidden rounded-3xl border border-white/15 glass-card--light shadow-card">
+        <img src="{{ url_for('static', filename='uploads/' + item.image_path) }}" alt="" decoding="async" fetchpriority="high"
+          class="aspect-[4/3] w-full object-cover">
+      </div>
+    {% else %}
+      <div class="flex aspect-[4/3] items-center justify-center rounded-3xl border border-dashed border-white/20 glass-card">
+        <div class="text-center">
+          <svg class="mx-auto h-14 w-14 text-[#8B5CF6]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <p class="mt-2 text-sm text-slate-400">No photo</p>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-8 min-w-0 flex-1 lg:mt-0">
+    <span class="inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide backdrop-blur-md
+      {% if item.type == 'lost' %}bg-rose-500/20 text-rose-200 ring-1 ring-rose-400/40{% else %}bg-cyan-500/20 text-cyan-100 ring-1 ring-cyan-400/40{% endif %}">
+      {{ item.type|capitalize }}
+    </span>
+    <h1 class="font-display mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">{{ item.title }}</h1>
+    <p class="mt-4 text-base leading-relaxed text-slate-300">{{ item.description or 'No description provided.' }}</p>
+
+    <dl class="mt-6 grid gap-3 sm:grid-cols-2">
+      {% if item.location %}
+        <div class="rounded-2xl border border-white/10 glass-card--light px-4 py-3">
+          <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">Location</dt>
+          <dd class="mt-1 text-sm font-medium text-slate-900">{{ item.location }}</dd>
+        </div>
+      {% endif %}
+      {% if item.category %}
+        <div class="rounded-2xl border border-white/10 glass-card--light px-4 py-3">
+          <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500">Category</dt>
+          <dd class="mt-1 text-sm font-medium text-slate-900">{{ item.category }}</dd>
+        </div>
+      {% endif %}
+    </dl>
+
+    {% if item.ai_description %}
+      <div class="mt-6 rounded-3xl border border-[#8B5CF6]/25 bg-gradient-to-br from-[#4F46E5]/15 to-cyan-500/10 p-5 shadow-soft backdrop-blur-md">
+        <p class="text-xs font-semibold uppercase tracking-wide text-cyan-200">AI-assisted description</p>
+        <p class="mt-2 text-sm leading-relaxed text-slate-100">{{ item.ai_description }}</p>
+      </div>
+    {% endif %}
+
+    {% if show_contact_phone and item.contact_phone %}
+      <div class="mt-6 rounded-3xl border border-cyan-400/30 bg-gradient-to-br from-cyan-500/10 to-[#4F46E5]/10 p-5 shadow-soft ring-1 ring-cyan-400/20 backdrop-blur-md">
+        <p class="text-xs font-semibold uppercase tracking-wide text-cyan-200">Contact for this listing</p>
+        <a href="tel:{{ item.contact_phone }}" class="mt-2 inline-flex items-center gap-2 text-lg font-bold tabular-nums tracking-wide text-white hover:text-cyan-300">
+          <svg class="h-5 w-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          {{ item.contact_phone }}
+        </a>
+        <p class="mt-2 text-xs text-slate-400">Up to 11 digits. Shown when you’re authorized to coordinate a return.</p>
+      </div>
+    {% endif %}
+
+    <p class="mt-6 text-xs text-slate-500">Listed by <span class="font-medium text-slate-400">{{ owner.username if owner else 'unknown' }}</span></p>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      {% if current_user.is_authenticated %}
+        <a href="{{ url_for('match.results', item_id=item.id) }}"
+          class="btn-glow inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-[#4F46E5] to-[#8B5CF6] px-5 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-110">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Find matches
+        </a>
+      {% else %}
+        <a href="{{ url_for('auth.login', next=request.path) }}"
+          class="inline-flex rounded-2xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/20">Log in to find matches</a>
+      {% endif %}
+      <a href="{{ url_for('items.index') }}" class="inline-flex items-center rounded-2xl px-5 py-3 text-sm font-semibold text-cyan-300 transition hover:text-white">← All listings</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

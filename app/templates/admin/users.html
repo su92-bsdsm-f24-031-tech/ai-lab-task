@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Admin · Users{% endblock %}
+{% block body %}
+<div class="mb-6">
+  <a href="{{ url_for('admin.index') }}" class="text-sm font-medium text-cyan-300 transition hover:text-white">← Admin home</a>
+  <h1 class="font-display mt-2 text-2xl font-bold text-white">Users</h1>
+</div>
+
+<div class="overflow-hidden rounded-3xl border border-white/10 glass-card shadow-card">
+  <div class="overflow-x-auto">
+    <table class="table-saas min-w-full text-left text-sm text-slate-200">
+      <thead>
+        <tr>
+          <th class="px-4 py-3.5">ID</th>
+          <th class="px-4 py-3.5">Username</th>
+          <th class="px-4 py-3.5">Email</th>
+          <th class="px-4 py-3.5">Admin</th>
+          <th class="px-4 py-3.5 text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-white/10">
+        {% for u in users.items %}
+          <tr>
+            <td class="px-4 py-3.5 font-mono text-slate-400">{{ u.id }}</td>
+            <td class="px-4 py-3.5 font-medium text-white">{{ u.username }}</td>
+            <td class="px-4 py-3.5 text-slate-400">{{ u.email }}</td>
+            <td class="px-4 py-3.5">{% if u.is_admin %}<span class="text-xs font-bold text-[#8B5CF6]">Yes</span>{% else %}<span class="text-slate-500">—</span>{% endif %}</td>
+            <td class="px-4 py-3.5 text-right">
+              {% if u.id != current_user.id %}
+                <form action="{{ url_for('admin.delete_user', user_id=u.id) }}" method="post" class="inline" onsubmit="return confirm('Delete this user and all their listings?');">
+                  <button type="submit" class="text-xs font-semibold text-rose-400 transition hover:text-rose-300">Delete</button>
+                </form>
+              {% else %}
+                <span class="text-xs text-slate-500">You</span>
+              {% endif %}
+            </td>
+          </tr>
+        {% else %}
+          <tr><td colspan="5" class="px-4 py-12 text-center text-slate-400">No users.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% if users.pages > 1 %}
+    <div class="flex items-center justify-between border-t border-white/10 px-4 py-3 text-sm">
+      <span class="text-slate-500">Page {{ users.page }} of {{ users.pages }}</span>
+      <div class="flex gap-2">
+        {% if users.has_prev %}
+          <a href="{{ url_for('admin.users_list', page=users.prev_num) }}" class="rounded-xl border border-white/15 bg-white/5 px-3 py-1.5 font-medium text-slate-200 transition hover:bg-white/10">Previous</a>
+        {% endif %}
+        {% if users.has_next %}
+          <a href="{{ url_for('admin.users_list', page=users.next_num) }}" class="rounded-xl border border-white/15 bg-white/5 px-3 py-1.5 font-medium text-slate-200 transition hover:bg-white/10">Next</a>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

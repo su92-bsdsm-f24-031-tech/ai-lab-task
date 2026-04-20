@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block optional_assets %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+{% endblock %}
+{% block before_app_js %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+{% endblock %}
+{% block body %}
+<div class="-mx-4 -mt-4 sm:-mx-6 lg:-mx-8">
+  <section class="relative overflow-hidden border-b border-white/10 bg-gradient-to-br from-[#4F46E5]/40 via-[#8B5CF6]/35 to-[#06B6D4]/30 px-6 pb-24 pt-16 text-center backdrop-blur-xl sm:px-10 sm:pb-28 sm:pt-20 lg:px-16">
+    <div class="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.07\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-90"></div>
+    <div class="pointer-events-none absolute -left-32 top-20 h-72 w-72 rounded-full bg-cyan-400/25 blur-3xl"></div>
+    <div class="pointer-events-none absolute -right-24 bottom-10 h-64 w-64 rounded-full bg-[#8B5CF6]/30 blur-3xl"></div>
+
+    <div class="relative mx-auto max-w-4xl" data-aos="fade-up" data-aos-duration="800">
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-200/90">FoundBridge</p>
+      <h1 class="font-display mt-4 text-4xl font-bold tracking-tight text-white drop-shadow-sm sm:text-5xl md:text-6xl">
+        Find What Matters.<br class="hidden sm:inline" /> Return What’s Lost.
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-300 sm:text-xl">
+        Smart matching, beautiful listings, and a community-first experience—unlock everything after you sign in.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href="{{ url_for('auth.login') }}" class="btn-ripple btn-glow group inline-flex items-center justify-center rounded-2xl bg-white px-8 py-4 text-base font-semibold text-[#4F46E5] shadow-xl transition hover:scale-[1.02] hover:shadow-2xl">
+          <svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/></svg>
+          Log in
+        </a>
+        <a href="{{ url_for('auth.register') }}" class="inline-flex items-center justify-center rounded-2xl border-2 border-white/30 bg-white/5 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition hover:scale-[1.02] hover:bg-white/15">
+          Get started
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative z-10 -mt-16 px-4 pb-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-6xl">
+      <p class="mb-6 text-center text-sm font-medium text-slate-400">Preview — sign in to browse real listings</p>
+      <div class="grid gap-6 md:grid-cols-3">
+        {% for n in [1, 2, 3] %}
+        <div class="listing-card group relative overflow-hidden rounded-3xl border border-white/10 glass-card--light shadow-xl" data-aos="fade-up" data-aos-delay="{{ n * 80 }}">
+          <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-slate-800/50 to-indigo-900/40">
+            <div class="absolute inset-0 flex items-center justify-center blur-sm">
+              <div class="h-24 w-24 rounded-2xl bg-gradient-to-br from-[#4F46E5] to-[#06B6D4] opacity-50"></div>
+            </div>
+            <div class="absolute inset-0 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/35 p-4 text-center">
+              <svg class="h-10 w-10 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              <p class="mt-3 text-sm font-semibold text-white drop-shadow-md">Login to view full details</p>
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="h-4 w-3/4 rounded-lg bg-slate-300/50 blur-[2px]"></div>
+            <div class="mt-2 h-3 w-full rounded-lg bg-slate-200/40 blur-[2px]"></div>
+            <div class="mt-1 h-3 w-5/6 rounded-lg bg-slate-200/40 blur-[2px]"></div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-4 pb-16 text-center sm:px-6">
+    <div class="rounded-3xl border border-white/10 glass-card p-8 shadow-glow sm:p-10" data-aos="zoom-in">
+      <h2 class="text-xl font-bold text-white sm:text-2xl">Ready when you are</h2>
+      <p class="mt-2 text-slate-400">Create a free account to post, search, and use AI-assisted matching.</p>
+      <a href="{{ url_for('auth.register') }}" class="btn-ripple btn-glow mt-6 inline-flex rounded-2xl bg-gradient-to-r from-[#4F46E5] to-[#8B5CF6] px-8 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02]">Create free account</a>
+    </div>
+  </section>
+</div>
+{% endblock %}

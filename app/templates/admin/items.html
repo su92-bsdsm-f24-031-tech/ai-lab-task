@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Admin · Items{% endblock %}
+{% block body %}
+<div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+  <div>
+    <a href="{{ url_for('admin.index') }}" class="text-sm font-medium text-cyan-300 transition hover:text-white">← Admin home</a>
+    <h1 class="font-display mt-2 text-2xl font-bold text-white">All items</h1>
+  </div>
+</div>
+
+<div class="overflow-hidden rounded-3xl border border-white/10 glass-card shadow-card">
+  <div class="overflow-x-auto">
+    <table class="table-saas min-w-full text-left text-sm text-slate-200">
+      <thead>
+        <tr class="rounded-t-2xl">
+          <th class="px-4 py-3.5 first:rounded-tl-2xl">ID</th>
+          <th class="px-4 py-3.5">Type</th>
+          <th class="px-4 py-3.5">Title</th>
+          <th class="px-4 py-3.5">User</th>
+          <th class="px-4 py-3.5">Phone</th>
+          <th class="px-4 py-3.5">Status</th>
+          <th class="px-4 py-3.5 text-right last:rounded-tr-2xl">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-white/10">
+        {% for item in items.items %}
+          <tr>
+            <td class="whitespace-nowrap px-4 py-3.5 font-mono text-slate-400">{{ item.id }}</td>
+            <td class="px-4 py-3.5">
+              <span class="inline-flex rounded-lg px-2 py-0.5 text-xs font-bold {% if item.type == 'lost' %}bg-rose-500/20 text-rose-200 ring-1 ring-rose-400/30{% else %}bg-cyan-500/20 text-cyan-100 ring-1 ring-cyan-400/30{% endif %}">{{ item.type }}</span>
+            </td>
+            <td class="max-w-xs truncate px-4 py-3.5 font-medium text-white">{{ item.title }}</td>
+            <td class="px-4 py-3.5 text-slate-400">{{ item.user_id }}</td>
+            <td class="max-w-[8rem] truncate px-4 py-3.5 font-mono text-xs text-slate-400" title="{{ item.contact_phone or '' }}">{{ item.contact_phone or '—' }}</td>
+            <td class="px-4 py-3.5">
+              {% if item.is_resolved %}
+                <span class="text-xs font-medium text-slate-500">Resolved</span>
+              {% else %}
+                <span class="text-xs font-medium text-cyan-300">Active</span>
+              {% endif %}
+            </td>
+            <td class="whitespace-nowrap px-4 py-3.5 text-right">
+              <form action="{{ url_for('admin.toggle_resolved', item_id=item.id) }}" method="post" class="inline">
+                <button type="submit" class="text-xs font-semibold text-slate-300 transition hover:text-white">Toggle</button>
+              </form>
+              <form action="{{ url_for('admin.delete_item', item_id=item.id) }}" method="post" class="ml-3 inline" onsubmit="return confirm('Delete this item permanently?');">
+                <button type="submit" class="text-xs font-semibold text-rose-400 transition hover:text-rose-300">Delete</button>
+              </form>
+            </td>
+          </tr>
+        {% else %}
+          <tr><td colspan="7" class="px-4 py-12 text-center text-slate-400">No items.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% if items.pages > 1 %}
+    <div class="flex items-center justify-between border-t border-white/10 px-4 py-3 text-sm">
+      <span class="text-slate-500">Page {{ items.page }} of {{ items.pages }}</span>
+      <div class="flex gap-2">
+        {% if items.has_prev %}
+          <a href="{{ url_for('admin.items_list', page=items.prev_num) }}" class="rounded-xl border border-white/15 bg-white/5 px-3 py-1.5 font-medium text-slate-200 transition hover:bg-white/10">Previous</a>
+        {% endif %}
+        {% if items.has_next %}
+          <a href="{{ url_for('admin.items_list', page=items.next_num) }}" class="rounded-xl border border-white/15 bg-white/5 px-3 py-1.5 font-medium text-slate-200 transition hover:bg-white/10">Next</a>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
