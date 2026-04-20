@@ -1,0 +1,5 @@
+Flask
+gensim
+numpy
+scikit-learn
+tensorflow

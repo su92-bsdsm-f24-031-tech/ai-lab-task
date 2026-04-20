@@ -1,0 +1,199 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hello",
+        "hi",
+        "hey",
+        "assalam o alaikum",
+        "good morning",
+        "good evening",
+        "salam",
+        "hello there"
+      ],
+      "responses": [
+        "Welcome to Flavor Haven Restaurant. How can I help you today?",
+        "Hi. I can help with menu, timings, reservations, and delivery details.",
+        "Hello. Ask me anything about our restaurant services."
+      ]
+    },
+    {
+      "tag": "menu",
+      "patterns": [
+        "show menu",
+        "what food do you have",
+        "menu please",
+        "what can i order",
+        "tell me your dishes",
+        "any burgers",
+        "do you serve pizza",
+        "main courses available"
+      ],
+      "responses": [
+        "Our popular items are Chicken Alfredo Pasta, Zinger Burger, Margherita Pizza, and BBQ Platter.",
+        "We serve continental, desi BBQ, fast food, and desserts. Ask for any category and I can suggest options.",
+        "Our menu includes starters, main course, drinks, and desserts."
+      ]
+    },
+    {
+      "tag": "timings",
+      "patterns": [
+        "what are your timings",
+        "when do you open",
+        "closing time",
+        "what time are you open",
+        "restaurant hours",
+        "open today",
+        "what are the opening hours",
+        "what time do you close"
+      ],
+      "responses": [
+        "We are open daily from 11:00 AM to 11:00 PM.",
+        "Our working hours are 11 AM to 11 PM, seven days a week.",
+        "We open at 11:00 AM and close at 11:00 PM."
+      ]
+    },
+    {
+      "tag": "reservation",
+      "patterns": [
+        "i want to book a table",
+        "reservation please",
+        "how can i reserve",
+        "book table for tonight",
+        "table booking process",
+        "can i make reservation",
+        "reserve seats",
+        "book dinner table"
+      ],
+      "responses": [
+        "Sure. Please share your name, number of guests, and preferred time to reserve a table.",
+        "For reservations, call us at +92-300-1234567 or message us on WhatsApp.",
+        "Table booking is available for lunch and dinner slots."
+      ]
+    },
+    {
+      "tag": "availability",
+      "patterns": [
+        "is table available",
+        "any seat available now",
+        "do you have free table",
+        "can i get table for 4",
+        "table availability",
+        "how crowded are you",
+        "is it full right now",
+        "availability for tonight"
+      ],
+      "responses": [
+        "Current table availability changes quickly. Please call +92-300-1234567 for live confirmation.",
+        "We usually have availability before 7 PM. For peak hours, reservation is recommended.",
+        "Please share your preferred time and guests count, then I can guide you better."
+      ]
+    },
+    {
+      "tag": "price",
+      "patterns": [
+        "price range",
+        "how expensive is your restaurant",
+        "average meal cost",
+        "what are your prices",
+        "is food affordable",
+        "cost per person",
+        "dinner budget",
+        "how much for two people"
+      ],
+      "responses": [
+        "Our average cost is around PKR 1200 to 1800 per person depending on order.",
+        "You can enjoy a meal for two in approximately PKR 2500 to 3500.",
+        "Prices vary by dish, but we have both budget-friendly and premium options."
+      ]
+    },
+    {
+      "tag": "location",
+      "patterns": [
+        "where is your restaurant",
+        "share location",
+        "restaurant address",
+        "how to reach you",
+        "send map location",
+        "your branch location",
+        "where are you located",
+        "address please"
+      ],
+      "responses": [
+        "We are located at Main Food Street, Johar Town, Lahore.",
+        "Our address is Plot 22, Main Boulevard, Johar Town, Lahore.",
+        "You can find us on Google Maps by searching Flavor Haven Restaurant Johar Town."
+      ]
+    },
+    {
+      "tag": "delivery",
+      "patterns": [
+        "do you deliver",
+        "home delivery available",
+        "can i order online",
+        "delivery charges",
+        "takeaway option",
+        "is pickup available",
+        "food delivery timing",
+        "how to place delivery order"
+      ],
+      "responses": [
+        "Yes, we offer home delivery through Foodpanda and direct WhatsApp orders.",
+        "Delivery is available from 12 PM to 10:30 PM with charges based on distance.",
+        "Takeaway and pickup are both available at our counter."
+      ]
+    },
+    {
+      "tag": "contact",
+      "patterns": [
+        "contact number",
+        "phone number",
+        "how can i contact you",
+        "whatsapp number",
+        "customer support",
+        "call restaurant",
+        "helpline number",
+        "contact details"
+      ],
+      "responses": [
+        "You can call us at +92-300-1234567.",
+        "Our WhatsApp support is available on +92-300-1234567.",
+        "For all queries, contact +92-300-1234567 between 11 AM and 11 PM."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye",
+        "goodbye",
+        "see you",
+        "thanks bye",
+        "allah hafiz",
+        "talk later",
+        "ok bye",
+        "thank you"
+      ],
+      "responses": [
+        "Thank you for visiting Flavor Haven. Have a great day.",
+        "Goodbye. We look forward to serving you soon.",
+        "Take care. Reach out anytime for restaurant information."
+      ]
+    },
+    {
+      "tag": "fallback",
+      "patterns": [
+        "random question",
+        "something else",
+        "i do not know",
+        "help me with anything",
+        "unclear"
+      ],
+      "responses": [
+        "I can help with menu, timings, reservation, location, contact, and delivery.",
+        "Please ask about restaurant menu, prices, bookings, or opening hours.",
+        "Sorry, I did not understand. Try asking about menu, reservation, or timings."
+      ]
+    }
+  ]
+}
