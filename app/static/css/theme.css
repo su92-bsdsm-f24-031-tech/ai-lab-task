@@ -1,0 +1,349 @@
+/**
+ * FoundBridge — SaaS design system
+ * Primary #4F46E5 · Secondary #06B6D4 · Accent #8B5CF6
+ */
+
+/* ---- Animated app background ---- */
+@keyframes fb-gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fb-blob-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+@keyframes fb-blob-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-25px, 25px) scale(1.08); }
+}
+
+@keyframes fb-blob-3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(15px, -30px) rotate(8deg); }
+}
+
+@keyframes fb-shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* Isolate background compositing from the rest of the page */
+#app-bg {
+  isolation: isolate;
+  transform: translateZ(0);
+  contain: layout style;
+}
+
+.app-bg-gradient {
+  background: linear-gradient(
+    125deg,
+    #0f172a 0%,
+    #1e1b4b 25%,
+    #312e81 50%,
+    #164e63 75%,
+    #0f172a 100%
+  );
+  background-size: 400% 400%;
+  /* Slower = fewer GPU samples; still feels alive */
+  animation: fb-gradient-shift 36s ease infinite;
+  will-change: background-position;
+}
+
+.app-bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  /* Slightly smaller blur = less GPU fill-rate cost */
+  filter: blur(64px);
+  opacity: 0.52;
+  will-change: transform;
+}
+
+.app-bg-blob--1 {
+  width: min(42vw, 28rem);
+  height: min(42vw, 28rem);
+  left: -8%;
+  top: 10%;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.9) 0%, transparent 70%);
+  animation: fb-blob-1 18s ease-in-out infinite;
+}
+
+.app-bg-blob--2 {
+  width: min(50vw, 32rem);
+  height: min(50vw, 32rem);
+  right: -10%;
+  top: 35%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.55) 0%, transparent 68%);
+  animation: fb-blob-2 22s ease-in-out infinite;
+}
+
+.app-bg-blob--3 {
+  width: min(38vw, 24rem);
+  height: min(38vw, 24rem);
+  left: 25%;
+  bottom: -5%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.65) 0%, transparent 70%);
+  animation: fb-blob-3 20s ease-in-out infinite;
+}
+
+.app-bg-blob--4 {
+  width: min(30vw, 18rem);
+  height: min(30vw, 18rem);
+  right: 20%;
+  top: -5%;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.35) 0%, transparent 65%);
+  animation: fb-blob-3 26s ease-in-out infinite reverse;
+}
+
+/* Cheap grain (no SVG feTurbulence — avoids full-viewport filter cost) */
+.app-bg-noise {
+  opacity: 0.2;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.04) 2px,
+      rgba(255, 255, 255, 0.04) 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.025) 2px,
+      rgba(255, 255, 255, 0.025) 3px
+    );
+}
+
+.app-bg-vignette {
+  background: radial-gradient(ellipse 80% 70% at 50% 40%, transparent 0%, rgba(15, 23, 42, 0.5) 100%);
+  pointer-events: none;
+}
+
+/* ---- Glass surfaces ---- */
+.glass-nav {
+  background: rgba(15, 23, 42, 0.62);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  /* Lighter blur = much cheaper on scroll/sticky repaint */
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  transform: translateZ(0);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+}
+
+.glass-card--light {
+  background: rgba(248, 250, 252, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 8px 32px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+}
+
+.glass-footer {
+  background: rgba(15, 23, 42, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ---- Listing / portfolio cards: light GPU-friendly hover ---- */
+.listing-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.listing-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 16px 32px -12px rgba(79, 70, 229, 0.28),
+    0 0 0 1px rgba(139, 92, 246, 0.12);
+}
+
+/* Legacy: keep mild hover for any remaining .card-3d references */
+.card-3d {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-3d:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -8px rgba(79, 70, 229, 0.25);
+}
+
+/* ---- Buttons ---- */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.35s ease;
+}
+
+.btn-glow::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.5), rgba(6, 182, 212, 0.4), rgba(139, 92, 246, 0.45));
+  opacity: 0;
+  z-index: -1;
+  filter: blur(12px);
+  transition: opacity 0.35s ease;
+}
+
+.btn-glow:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 12px 40px -8px rgba(79, 70, 229, 0.55);
+}
+
+.btn-glow:hover::after {
+  opacity: 0.85;
+}
+
+/* ---- Floating labels ---- */
+.float-field {
+  position: relative;
+}
+
+.float-field input,
+.float-field textarea,
+.float-field select {
+  width: 100%;
+}
+
+.float-field input:focus,
+.float-field textarea:focus,
+.float-field select:focus {
+  outline: none;
+  border-color: rgba(79, 70, 229, 0.65) !important;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2), 0 0 24px -4px rgba(6, 182, 212, 0.35);
+}
+
+.float-label {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.875rem;
+  color: rgba(148, 163, 184, 0.95);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  background: transparent;
+  padding: 0 0.25rem;
+}
+
+/* Textarea: label starts higher than single-line inputs */
+.float-field textarea ~ .float-label {
+  top: 1.35rem;
+  transform: translateY(0);
+}
+
+/* Floated state (shared) */
+.float-field input:focus ~ .float-label,
+.float-field input:not(:placeholder-shown) ~ .float-label,
+.float-field textarea:focus ~ .float-label,
+.float-field textarea:not(:placeholder-shown) ~ .float-label {
+  top: -0.5rem;
+  left: 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(129, 140, 248, 0.95);
+  transform: translateY(0);
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 0.25rem;
+}
+
+/* ---- Page enter ---- */
+@keyframes fb-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter-active {
+  animation: fb-page-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ---- Table (SaaS) ---- */
+.table-saas {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-saas thead th {
+  background: rgba(15, 23, 42, 0.55);
+  color: rgba(226, 232, 240, 0.85);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.table-saas tbody tr {
+  transition: background 0.2s ease;
+}
+
+.table-saas tbody tr:hover {
+  background: rgba(79, 70, 229, 0.08);
+}
+
+/* ---- Loading overlay for forms ---- */
+.form-loading-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  background: rgba(15, 23, 42, 0.38);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+  pointer-events: none;
+}
+
+form.is-loading .form-loading-overlay {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-bg-gradient {
+    animation: none;
+  }
+  .app-bg-blob {
+    animation: none;
+  }
+  .page-enter-active {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .listing-card:hover,
+  .card-3d:hover {
+    transform: none;
+  }
+}
