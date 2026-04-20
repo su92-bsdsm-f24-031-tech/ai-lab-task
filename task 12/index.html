@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 12 - QnA Bot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="chat-wrapper">
+    <h1>Restaurant QnA Bot</h1>
+    <p class="subtitle">MiniLM embeddings + FAISS similarity search + Flask UI</p>
+
+    {% if load_error %}
+      <div class="warning">
+        Assets not loaded. Run:
+        <code>python preprocess_data.py</code>
+        then
+        <code>python build_faiss_index.py</code>
+      </div>
+    {% endif %}
+
+    <section id="chatWindow" class="chat-window">
+      <div class="message bot">
+        <div class="bubble">Ask me about menu, timings, reservations, location, contact, or delivery.</div>
+      </div>
+    </section>
+
+    <form id="chatForm" class="chat-form">
+      <input id="userInput" type="text" placeholder="Type your question..." autocomplete="off">
+      <button type="submit">Search</button>
+    </form>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

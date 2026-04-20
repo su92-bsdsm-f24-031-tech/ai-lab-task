@@ -1,0 +1,128 @@
+[
+  {
+    "question": "What are your opening hours?",
+    "answer": "We are open daily from 11:00 AM to 11:00 PM.",
+    "question_clean": "what are your opening hours",
+    "answer_clean": "we are open daily from 11 00 am to 11 00 pm",
+    "combined_text": "question: what are your opening hours answer: we are open daily from 11 00 am to 11 00 pm"
+  },
+  {
+    "question": "When do you open?",
+    "answer": "Our restaurant opens at 11:00 AM every day.",
+    "question_clean": "when do you open",
+    "answer_clean": "our restaurant opens at 11 00 am every day",
+    "combined_text": "question: when do you open answer: our restaurant opens at 11 00 am every day"
+  },
+  {
+    "question": "What time do you close?",
+    "answer": "We close at 11:00 PM.",
+    "question_clean": "what time do you close",
+    "answer_clean": "we close at 11 00 pm",
+    "combined_text": "question: what time do you close answer: we close at 11 00 pm"
+  },
+  {
+    "question": "Do you offer home delivery?",
+    "answer": "Yes, we provide home delivery through Foodpanda and direct WhatsApp orders.",
+    "question_clean": "do you offer home delivery",
+    "answer_clean": "yes we provide home delivery through foodpanda and direct whatsapp orders",
+    "combined_text": "question: do you offer home delivery answer: yes we provide home delivery through foodpanda and direct whatsapp orders"
+  },
+  {
+    "question": "Is takeaway available?",
+    "answer": "Yes, takeaway and pickup are both available.",
+    "question_clean": "is takeaway available",
+    "answer_clean": "yes takeaway and pickup are both available",
+    "combined_text": "question: is takeaway available answer: yes takeaway and pickup are both available"
+  },
+  {
+    "question": "Where is your restaurant located?",
+    "answer": "We are located at Main Food Street, Johar Town, Lahore.",
+    "question_clean": "where is your restaurant located",
+    "answer_clean": "we are located at main food street johar town lahore",
+    "combined_text": "question: where is your restaurant located answer: we are located at main food street johar town lahore"
+  },
+  {
+    "question": "Can you share your address?",
+    "answer": "Our address is Plot 22, Main Boulevard, Johar Town, Lahore.",
+    "question_clean": "can you share your address",
+    "answer_clean": "our address is plot 22 main boulevard johar town lahore",
+    "combined_text": "question: can you share your address answer: our address is plot 22 main boulevard johar town lahore"
+  },
+  {
+    "question": "How can I reserve a table?",
+    "answer": "Please share your name, guest count, and preferred time to reserve a table.",
+    "question_clean": "how can i reserve a table",
+    "answer_clean": "please share your name guest count and preferred time to reserve a table",
+    "combined_text": "question: how can i reserve a table answer: please share your name guest count and preferred time to reserve a table"
+  },
+  {
+    "question": "Can I book a table for dinner?",
+    "answer": "Yes, table bookings are available for lunch and dinner slots.",
+    "question_clean": "can i book a table for dinner",
+    "answer_clean": "yes table bookings are available for lunch and dinner slots",
+    "combined_text": "question: can i book a table for dinner answer: yes table bookings are available for lunch and dinner slots"
+  },
+  {
+    "question": "What is your contact number?",
+    "answer": "You can call us at +92-300-1234567.",
+    "question_clean": "what is your contact number",
+    "answer_clean": "you can call us at 92 300 1234567",
+    "combined_text": "question: what is your contact number answer: you can call us at 92 300 1234567"
+  },
+  {
+    "question": "Do you have WhatsApp support?",
+    "answer": "Yes, our WhatsApp support is available on +92-300-1234567.",
+    "question_clean": "do you have whatsapp support",
+    "answer_clean": "yes our whatsapp support is available on 92 300 1234567",
+    "combined_text": "question: do you have whatsapp support answer: yes our whatsapp support is available on 92 300 1234567"
+  },
+  {
+    "question": "What is the average meal cost?",
+    "answer": "Average cost is around PKR 1200 to 1800 per person.",
+    "question_clean": "what is the average meal cost",
+    "answer_clean": "average cost is around pkr 1200 to 1800 per person",
+    "combined_text": "question: what is the average meal cost answer: average cost is around pkr 1200 to 1800 per person"
+  },
+  {
+    "question": "How much for two people?",
+    "answer": "A meal for two is typically around PKR 2500 to 3500.",
+    "question_clean": "how much for two people",
+    "answer_clean": "a meal for two is typically around pkr 2500 to 3500",
+    "combined_text": "question: how much for two people answer: a meal for two is typically around pkr 2500 to 3500"
+  },
+  {
+    "question": "Do you serve pizza?",
+    "answer": "Yes, we serve popular pizzas including Margherita Pizza.",
+    "question_clean": "do you serve pizza",
+    "answer_clean": "yes we serve popular pizzas including margherita pizza",
+    "combined_text": "question: do you serve pizza answer: yes we serve popular pizzas including margherita pizza"
+  },
+  {
+    "question": "What dishes are popular?",
+    "answer": "Popular items include Chicken Alfredo Pasta, Zinger Burger, Margherita Pizza, and BBQ Platter.",
+    "question_clean": "what dishes are popular",
+    "answer_clean": "popular items include chicken alfredo pasta zinger burger margherita pizza and bbq platter",
+    "combined_text": "question: what dishes are popular answer: popular items include chicken alfredo pasta zinger burger margherita pizza and bbq platter"
+  },
+  {
+    "question": "Is table available right now?",
+    "answer": "Availability changes quickly. Please call +92-300-1234567 for live confirmation.",
+    "question_clean": "is table available right now",
+    "answer_clean": "availability changes quickly please call 92 300 1234567 for live confirmation",
+    "combined_text": "question: is table available right now answer: availability changes quickly please call 92 300 1234567 for live confirmation"
+  },
+  {
+    "question": "Can I get a table for four tonight?",
+    "answer": "Please share your exact time and guest count so we can guide you better.",
+    "question_clean": "can i get a table for four tonight",
+    "answer_clean": "please share your exact time and guest count so we can guide you better",
+    "combined_text": "question: can i get a table for four tonight answer: please share your exact time and guest count so we can guide you better"
+  },
+  {
+    "question": "What can I ask you about?",
+    "answer": "You can ask about menu, timings, reservations, location, contact, pricing, and delivery.",
+    "question_clean": "what can i ask you about",
+    "answer_clean": "you can ask about menu timings reservations location contact pricing and delivery",
+    "combined_text": "question: what can i ask you about answer: you can ask about menu timings reservations location contact pricing and delivery"
+  }
+]

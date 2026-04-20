@@ -1,0 +1,74 @@
+[
+  {
+    "question": "What are your opening hours?",
+    "answer": "We are open daily from 11:00 AM to 11:00 PM."
+  },
+  {
+    "question": "When do you open?",
+    "answer": "Our restaurant opens at 11:00 AM every day."
+  },
+  {
+    "question": "What time do you close?",
+    "answer": "We close at 11:00 PM."
+  },
+  {
+    "question": "Do you offer home delivery?",
+    "answer": "Yes, we provide home delivery through Foodpanda and direct WhatsApp orders."
+  },
+  {
+    "question": "Is takeaway available?",
+    "answer": "Yes, takeaway and pickup are both available."
+  },
+  {
+    "question": "Where is your restaurant located?",
+    "answer": "We are located at Main Food Street, Johar Town, Lahore."
+  },
+  {
+    "question": "Can you share your address?",
+    "answer": "Our address is Plot 22, Main Boulevard, Johar Town, Lahore."
+  },
+  {
+    "question": "How can I reserve a table?",
+    "answer": "Please share your name, guest count, and preferred time to reserve a table."
+  },
+  {
+    "question": "Can I book a table for dinner?",
+    "answer": "Yes, table bookings are available for lunch and dinner slots."
+  },
+  {
+    "question": "What is your contact number?",
+    "answer": "You can call us at +92-300-1234567."
+  },
+  {
+    "question": "Do you have WhatsApp support?",
+    "answer": "Yes, our WhatsApp support is available on +92-300-1234567."
+  },
+  {
+    "question": "What is the average meal cost?",
+    "answer": "Average cost is around PKR 1200 to 1800 per person."
+  },
+  {
+    "question": "How much for two people?",
+    "answer": "A meal for two is typically around PKR 2500 to 3500."
+  },
+  {
+    "question": "Do you serve pizza?",
+    "answer": "Yes, we serve popular pizzas including Margherita Pizza."
+  },
+  {
+    "question": "What dishes are popular?",
+    "answer": "Popular items include Chicken Alfredo Pasta, Zinger Burger, Margherita Pizza, and BBQ Platter."
+  },
+  {
+    "question": "Is table available right now?",
+    "answer": "Availability changes quickly. Please call +92-300-1234567 for live confirmation."
+  },
+  {
+    "question": "Can I get a table for four tonight?",
+    "answer": "Please share your exact time and guest count so we can guide you better."
+  },
+  {
+    "question": "What can I ask you about?",
+    "answer": "You can ask about menu, timings, reservations, location, contact, pricing, and delivery."
+  }
+]
